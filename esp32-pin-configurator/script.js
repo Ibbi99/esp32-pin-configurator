@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedMode = null;
     let selectedFunction = null;
 
-    // Step 2 options by mode
     const step2Options = {
         input: [
             { value: 'adc', label: 'ADC', desc: 'Analog to Digital Conversion' },
@@ -281,3 +280,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
