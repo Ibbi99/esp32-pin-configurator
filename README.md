@@ -32,6 +32,3 @@ Serial communication.
 /script.js → Application logic
 /style.css → Styling
 
-
-## Preview
-![ESP32 UI](esp32.png)
