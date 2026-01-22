@@ -1,0 +1,213 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0d0d0d;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #0d0d0d;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.navbar .logo .highlight {
+  background: linear-gradient(90deg, #33ffcc, #ff6699);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#resetButton {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(90deg, #33ffcc, #ff6699);
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+    border: none;
+}
+
+#resetButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.15);
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.main-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+#esp32 {
+    flex: 0 0 auto;
+    box-shadow: 0 5px 15px rgb(0, 0,21);
+    max-width: 100%;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #33ffcc;
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+    max-width: 250px;
+    font-size: 14px;
+}
+
+.tooltip h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}
+
+.tooltip p {
+    margin: 0 0 3px 0;
+}
+.selectedPin, .dashboard {
+    width: 300px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* Prevents the dashboard from shrinking */
+}
+
+.selectedPin h2 {
+    margin-top: 0;
+}
+
+.options-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option-box {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-box:hover {
+    background-color: #333;
+    border-color: #666;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.option-box h3 {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-top: 0;
+    border-radius: 25px;
+    font-weight: 600;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    background: linear-gradient(90deg, #33ffcc, #ff6699);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.option-box p {
+    margin-bottom: 0;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.option-box.active {
+    background-color: #3a3a3a;
+    border-color: #ff6699;
+    box-shadow: 0 0 0 2px rgba(77, 158, 255, 0.3);
+}
+
+.pin-detail h3 {
+    color: #ff6699;
+    margin-bottom: 10px;
+}
+
+.pin:hover {
+    filter: drop-shadow(0 0 5px #ff6699)
+            drop-shadow(0 0 10px #ff6699)
+            drop-shadow(0 0 15px #ff6699);
+}
+
+.pin-detail p {
+    margin: 5px 0;
+}
+
+.configured-pin {
+    filter: drop-shadow(0 0 5px #33ffcc)
+            drop-shadow(0 0 10px #33ffcc)
+            drop-shadow(0 0 15px #33ffcc);
+}
+
+
+#config-area{
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .selectedPin, .dashboard {
+        width: 90%;
+    }
+    .option-box h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .selectedPin, .dashboard {
+        padding: 15px;
+    }
+    .option-box h3 {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+}
