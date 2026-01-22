@@ -6,7 +6,7 @@
 #define ledPin 2
 #define adcPin 34   // ADC1 folosit pt test
 
-const char *ssid = "iPhone-Cristina";
+const char *ssid = "internet";
 const char *password = "12345678";
 
 char *ledState = "OFF";
@@ -31,7 +31,6 @@ void handleJson(const String &msg)
     return;
   }
 
-  // Itereaza prin toti pinii trimisi
   for (JsonPair kv : doc.as<JsonObject>()) {
     const char* pinName = kv.key().c_str();
     JsonObject cfg = kv.value().as<JsonObject>();
@@ -45,7 +44,6 @@ void handleJson(const String &msg)
       Serial.printf("  PWM Frequency: %d\n", cfg["frequency"].as<int>());
     if (cfg.containsKey("dutyCycle"))
       Serial.printf("  PWM Duty: %f\n", cfg["dutyCycle"].as<float>());
-    // next pentru phase, deadband, DAC value
 
     if (strcmp(pinName, "GPIO 2") == 0 && cfg["mode"] == "output")
     {
@@ -84,12 +82,11 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
       {
         const char* action = doc["action"];
         const char* pinName = doc["pin"];
-        int value = doc["value"] | -1; // -1 daca nu exista
+        int value = doc["value"] | -1;
   
         int pinNumber = -1;
         if (strcmp(pinName, "GPIO 2") == 0) pinNumber = 2;
         if (strcmp(pinName, "GPIO 4") == 0) pinNumber = 4;
-        // +alte mapari pt pini
   
         if (pinNumber != -1) 
         {
@@ -122,12 +119,11 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
 
 void initWebServer()
 {
-//  WiFi.softAP(ssid, password);
+
   WiFi.begin(ssid, password);
   delay(5000);
 
   Serial.begin(115200);
-//  Serial.println(WiFi.softAPIP());
 
   while(WiFi.status()!= WL_CONNECTED)
   {
@@ -180,7 +176,7 @@ void loop() {
   static unsigned long lastSend = 0;
   if (millis() - lastSend > 500) {
     lastSend = millis();
-    int adcValue = analogRead(adcPin); // citire ADC
+    int adcValue = analogRead(adcPin);
     if(ws.count() > 0) {
       String msg = "ADC:" + String(adcValue);
         ws.textAll(msg);
@@ -193,3 +189,4 @@ void loop() {
     digitalWrite(ledPin, LOW);
   }
 }
+
