@@ -4,7 +4,7 @@
 #include <ArduinoJson.h>
 
 #define ledPin 2
-#define adcPin 34   // ADC1 folosit pt test
+#define adcPin 34
 
 const char *ssid = "internet";
 const char *password = "12345678";
@@ -189,4 +189,5 @@ void loop() {
     digitalWrite(ledPin, LOW);
   }
 }
+
 
